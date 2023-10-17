@@ -4,6 +4,7 @@
 
 const suspectsArray = [
   {
+    name: "mrGreen",
     firstName: "Jacob",
     lastName: "Green",
     occupation: "Entrepreneur",
@@ -69,6 +70,7 @@ const suspectsArray = [
 const roomsArray = [
   { name: "Dining Room" },
   { name: "Conservatory" },
+  { name: "Kitchen" },
   { name: "Study" },
   { name: "Library" },
   { name: "Billiard Room" },
@@ -80,6 +82,7 @@ const roomsArray = [
   { name: "Observatory" },
   { name: "Theater" },
   { name: "Guest House" },
+  { name: "Patio" },
 ];
 
 // Weapons Array
@@ -98,11 +101,35 @@ const weaponsArray = [
 
 // ITERATION 2
 
-function selectRandom() {}
-weaponsArray();
+function selectRandom(suspectsArray) {
+  let random = suspectsArray[Math.floor(Math.random() * suspectsArray.length)];
+  return random;
+}
 
-function pickMystery() {}
+// ITERATION 2.1
+
+function pickMystery () {
+ let suspect = selectRandom(suspectsArray);
+ let weapon = selectRandom(weaponsArray);
+ let room = selectRandom(roomsArray);
+
+ const mystery = {
+  suspect: suspect,
+  weapon: weapon,
+  room: room,
+ } 
+  return mystery;
+}
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(object) {
+  let killerName = object["suspect"].firstName;
+  let killerLastName = object["suspect"].lastName;
+  let killerRoom = object["room"].name;
+  let killerWeapon = object["weapong"].name;
+
+  let killer = `${killerName} ${killerLastName} killed Mr. Boddy using the ${killerWeapon} in the ${killerRoom}!`
+
+  return killer;
+}
